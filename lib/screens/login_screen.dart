@@ -84,12 +84,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: Colors.lightBlueAccent,
                   borderRadius: BorderRadius.all(Radius.circular(30.0)),
                   elevation: 5.0,
-                  child: MaterialButton(
+                  child: TextButton(
                     onPressed: () {
                       //Implement login functionality.
                     },
-                    minWidth: 200.0,
-                    height: 42.0,
+                    style: TextButton.styleFrom(minimumSize: Size(42, 42)),
                     child: Text(
                       'Log In',
                     ),

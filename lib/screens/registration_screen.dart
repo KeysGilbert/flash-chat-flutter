@@ -80,12 +80,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   color: Colors.blueAccent,
                   borderRadius: BorderRadius.all(Radius.circular(30.0)),
                   elevation: 5.0,
-                  child: MaterialButton(
+                  child: TextButton(
                     onPressed: () {
                       //Implement registration functionality.
                     },
-                    minWidth: 200.0,
-                    height: 42.0,
+                   style: TextButton.styleFrom(minimumSize: Size(42, 42)),
                     child: Text(
                       'Register',
                       style: TextStyle(color: Colors.white),
