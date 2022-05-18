@@ -24,15 +24,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           children: <Widget>[
             Row(
               children: <Widget>[
-                Container(
-                  child: Image.asset('images/logo.png'),
-                  height: 60.0,
+                Hero(
+                  tag: 'logo',
+                  child: Container(
+                    child: Image.asset('images/logo.png'),
+                    height: 60.0,
+                  ),
                 ),
                 Text(
                   'Flash Chat',
                   style: TextStyle(
                     fontSize: 45.0,
                     fontWeight: FontWeight.w900,
+                    color: Colors.black,
                   ),
                 ),
               ],
@@ -53,7 +57,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   },
                   style: TextButton.styleFrom(minimumSize: Size(42, 42)),
                   child: Text(
-                    'Log In',
+                    'Log In', style: TextStyle(color: Colors.white),
                   ),
                 ),
               ),
@@ -71,7 +75,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   },
                   style: TextButton.styleFrom(minimumSize: Size(42, 42)),
                   child: Text(
-                    'Register',
+                    'Register', style: TextStyle(color: Colors.white),
                   ),
                 ),
               ),
