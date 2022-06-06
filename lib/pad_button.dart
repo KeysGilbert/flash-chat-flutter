@@ -5,7 +5,7 @@ class PadButton extends StatelessWidget {
   final String buttonText;
   final Function onPressed;
 
-  const PadButton(this.buttonText, {this.buttonColor, this.onPressed});
+  const PadButton({this.buttonText, this.buttonColor, @required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

@@ -71,14 +71,14 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               height: 48.0,
             ),
             PadButton(
-              'login',
+              buttonText: 'login',
               buttonColor: Colors.lightBlueAccent,
               onPressed: () {
                 Navigator.pushNamed(context, LoginScreen.id);
               },
             ),
             PadButton(
-              'Register',
+              buttonText: 'Register',
               buttonColor: Colors.blueAccent,
               onPressed: () {
                 Navigator.pushNamed(context, RegistrationScreen.id);
