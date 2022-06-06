@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flash_chat/pad_button.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static String id = 'RegistrationScreen';
@@ -41,11 +42,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blueAccent, width: 1.0),
+                    borderSide:
+                        BorderSide(color: Colors.blueAccent, width: 1.0),
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blueAccent, width: 2.0),
+                    borderSide:
+                        BorderSide(color: Colors.blueAccent, width: 2.0),
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
                 ),
@@ -65,11 +68,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blueAccent, width: 1.0),
+                    borderSide:
+                        BorderSide(color: Colors.blueAccent, width: 1.0),
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blueAccent, width: 2.0),
+                    borderSide:
+                        BorderSide(color: Colors.blueAccent, width: 2.0),
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
                 ),
@@ -77,23 +82,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               SizedBox(
                 height: 24.0,
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 16.0),
-                child: Material(
-                  color: Colors.blueAccent,
-                  borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                  elevation: 5.0,
-                  child: TextButton(
-                    onPressed: () {
-                      //Implement registration functionality.
-                    },
-                   style: TextButton.styleFrom(minimumSize: Size(42, 42)),
-                    child: Text(
-                      'Register',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
+              PadButton(
+                buttonText: 'Register',
+                buttonColor: Colors.blueAccent,
+                onPressed: () {
+                  //do something
+                },
               ),
             ],
           ),

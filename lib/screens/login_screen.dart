@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flash_chat/pad_button.dart';
 
 class LoginScreen extends StatefulWidget {
   static String id = 'LoginScreen';
@@ -81,22 +82,12 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 24.0,
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 16.0),
-                child: Material(
-                  color: Colors.lightBlueAccent,
-                  borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                  elevation: 5.0,
-                  child: TextButton(
-                    onPressed: () {
-                      //Implement login functionality.
-                    },
-                    style: TextButton.styleFrom(minimumSize: Size(42, 42)),
-                    child: Text(
-                      'Log In',
-                    ),
-                  ),
-                ),
+              PadButton(
+                buttonText: 'Login',
+                buttonColor: Colors.lightBlueAccent,
+                onPressed: () {
+                  //do something
+                },
               ),
             ],
           ),
