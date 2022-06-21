@@ -35,6 +35,15 @@ class _ChatScreenState extends State<ChatScreen> {
     }
   }
 
+//retrieve from firestore and listen for document updates
+  void messageStream() async {
+    await for (var snapshot in _store.collection('messages').snapshots()) {
+      for (var message in snapshot.docs) {
+        print(message.data());
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,6 +65,15 @@ class _ChatScreenState extends State<ChatScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            StreamBuilder<QuerySnapshot>(
+              //convert stream of messsages to dart widget
+              stream: _store.collection('messages').snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  final messages = snapshot.data.docs;
+                }
+              },
+            ),
             Container(
               decoration: kMessageContainerDecoration,
               child: Row(
@@ -72,8 +90,8 @@ class _ChatScreenState extends State<ChatScreen> {
                   TextButton(
                     onPressed: () {
                       //add message information to cloud firestore messages collection
-                      _store.collection('messages').add({'text': messageText, 'sender': loggedInUser.email});
-                      
+                      _store.collection('messages').add(
+                          {'text': messageText, 'sender': loggedInUser.email});
                     },
                     child: Text(
                       'Send',
