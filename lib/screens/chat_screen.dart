@@ -71,7 +71,21 @@ class _ChatScreenState extends State<ChatScreen> {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   final messages = snapshot.data.docs;
+                  List<Text> messageWidgets =
+                      []; //for containing the messages sent to firebase collection
+
+                  for (var message in messages) {
+                    final messageText = message.get('text');
+                    final messageSender = message.get('sender');
+                    final messageWidget = Text('$messageText from $messageSender'); //store message
+                    messageWidgets.add(messageWidget);
+                  }
+
+                  return Column(
+                    children: messageWidgets,
+                  );
                 }
+                return Text('no data'); //if the snapshot has no data
               },
             ),
             Container(
