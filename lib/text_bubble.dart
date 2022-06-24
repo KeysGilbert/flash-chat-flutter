@@ -7,7 +7,22 @@ class textBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-        color: Colors.lightBlueAccent, child: Text('$text from $sender'));
+    return Padding(
+      padding: EdgeInsets.all(10.0),
+      child: Material(
+          elevation: 5.0,
+          borderRadius: BorderRadius.all(Radius.circular(50)),
+          color: Colors.lightBlueAccent,
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+                vertical: 10.0,
+                horizontal:
+                    20.0), 
+            child: Text(
+              '$text from $sender',
+              style: TextStyle(color: Colors.white),
+            ),
+          )),
+    );
   }
 }
