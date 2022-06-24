@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flash_chat/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flash_chat/text_bubble.dart';
 
 class ChatScreen extends StatefulWidget {
   static String id = 'ChatScreen';
@@ -66,28 +67,38 @@ class _ChatScreenState extends State<ChatScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             StreamBuilder<QuerySnapshot>(
-              //convert stream of messsages to dart widget
-              stream: _store.collection('messages').snapshots(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  final messages = snapshot.data.docs;
-                  List<Text> messageWidgets =
-                      []; //for containing the messages sent to firebase collection
+                //convert stream of messsages to dart widget
+                stream: _store.collection('messages').snapshots(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    final messages = snapshot.data.docs;
+                    List<textBubble> messageWidgets =
+                        []; //for containing the messages sent to firebase collection
 
-                  for (var message in messages) {
-                    final messageText = message.get('text');
-                    final messageSender = message.get('sender');
-                    final messageWidget = Text('$messageText from $messageSender'); //store message
-                    messageWidgets.add(messageWidget);
+                    for (var message in messages) {
+                      final messageText = message.get('text');
+                      final messageSender = message.get('sender');
+                      final messageWidget = textBubble(
+                        text: messageText,
+                        sender: messageSender,
+                      );
+                      messageWidgets.add(messageWidget);
+                    }
+                    
+                    return Expanded(
+                      child: ListView(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 20.0),
+                        children: messageWidgets,
+                      ),
+                    );
                   }
-
-                  return Column(
-                    children: messageWidgets,
-                  );
-                }
-                return Text('no data'); //if the snapshot has no data
-              },
-            ),
+                  return Center(
+                    child: CircularProgressIndicator(
+                      backgroundColor: Colors.lightBlue,
+                    ),
+                  ); //if the snapshot has no data
+                }),
             Container(
               decoration: kMessageContainerDecoration,
               child: Row(
