@@ -9,20 +9,26 @@ class textBubble extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(10.0),
-      child: Material(
-          elevation: 5.0,
-          borderRadius: BorderRadius.all(Radius.circular(50)),
-          color: Colors.lightBlueAccent,
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-                vertical: 10.0,
-                horizontal:
-                    20.0), 
-            child: Text(
-              '$text from $sender',
-              style: TextStyle(color: Colors.white),
-            ),
-          )),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Text(
+            '$sender',
+            style: TextStyle(fontSize: 10.0, color: Colors.black45),
+          ),
+          Material(
+              elevation: 5.0,
+              borderRadius: BorderRadius.all(Radius.circular(50)),
+              color: Colors.lightBlueAccent,
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                child: Text(
+                  '$text',
+                  style: TextStyle(color: Colors.white),
+                ),
+              )),
+        ],
+      ),
     );
   }
 }
