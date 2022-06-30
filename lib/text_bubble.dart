@@ -18,7 +18,10 @@ class textBubble extends StatelessWidget {
           ),
           Material(
               elevation: 5.0,
-              borderRadius: BorderRadius.all(Radius.circular(50)),
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  bottomLeft: Radius.circular(30),
+                  bottomRight: Radius.circular(30)),
               color: Colors.lightBlueAccent,
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
