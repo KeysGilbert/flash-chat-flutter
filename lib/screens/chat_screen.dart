@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flash_chat/text_bubble.dart';
 
 final _store = FirebaseFirestore.instance;
+User loggedInUser;
 
 class ChatScreen extends StatefulWidget {
   static String id = 'ChatScreen';
@@ -15,7 +16,6 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final _auth = FirebaseAuth.instance;
-  User loggedInUser;
   String messageText;
   final messageController = TextEditingController();
 
@@ -120,9 +120,16 @@ class MessageStream extends StatelessWidget {
             for (var message in messages) {
               final messageText = message.get('text');
               final messageSender = message.get('sender');
+              final currentUser = loggedInUser.email;
+              
+              if(currentUser == messageSender) {
+                //message is from loggedInUser
+              }
+
               final messageWidget = textBubble(
                 text: messageText,
                 sender: messageSender,
+                isMe: currentUser == messageSender,
               );
               messageWidgets.add(messageWidget);
             }
